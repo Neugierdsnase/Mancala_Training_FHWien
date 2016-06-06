@@ -4,9 +4,9 @@
 }
 
 .hole {
-	width: 3em;
+	min-width: 3em;
 	min-height: 3em;
-	border-radius: 0.5em;
+	border-radius: 0.2em;
 	margin: 4px;
 	text-align: center;
 	font-family: 'Nova Mono';
@@ -55,6 +55,7 @@
 	text-align: center;
 	font-family: 'Nova Mono';
 	font-size: 3vw;
+	z-index: -1;
 }
 
 h4 {
@@ -89,10 +90,94 @@ h5 {
 
 .playingfield {
 	margin-top: 3em; 
+	z-index: 500;
 }
 
 @media screen and (max-width: 890px) {
-    body {
-        background-color: lightgreen;
-    }
+
+	.blue {
+		transform: rotate(90deg);
+	}
+
+	.red {
+		transform: rotate(270deg);
+	}
+
+	.container {
+		max-width: 40%;
+		display: flex;
+		border-radius: 0.5em;
+		flex-direction: column-reverse;
+	}
+
+	.subcontainer {
+		margin: auto;
+		display: flex;
+		flex-direction: row;
+	}
+
+	.holecontainer {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	#blueholes {
+		flex-direction: column;
+		display: flex;
+	}
+
+	.playingfield {
+		display: flex;
+		flex-direction: row;
+
+	}
+
+	.messages {
+		margin-left: -2em;
+		font-size: 1.7em;
+		transform: rotate(90deg);
+		transform-origin: left top 0;
+		position: absolute;
+		min-height: 20em;
+		display: flex;
+		flex-direction: column;
+		width: 20em;
+	}
+
+	.info {
+		border: 10px solid black;
+		padding-top: 15em;
+		padding-bottom: 15em;
+		padding-left: 20vw;
+		padding-right: 20vw;
+		margin-left: 20%;
+	}
+
+	.newgame {
+		cursor: pointer;
+		font-family: 'Nova Mono';
+		font-size: 1.5em;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	
+	.messages {
+		min-height: 5em;
+		margin-top: 2em;
+		font-size: 1.5em;
+	}
+
+	h4 {
+		font-size: 2.5em;
+	}
+
+	h5 {
+		font-size: 2.5em;
+	}
+
+	.info {
+		margin-top: -1.5em;
+		margin-left: 9%;
+	}
 }
