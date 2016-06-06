@@ -1,0 +1,98 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.hole {
+	width: 3em;
+	min-height: 3em;
+	border-radius: 0.5em;
+	margin: 4px;
+	text-align: center;
+	font-family: 'Nova Mono';
+	font-size: 1.5em;
+	box-shadow: inset 4px 6px 6px 1px rgba(0,0,0,0.47);
+}
+
+.blue {
+	background-color: #c0dcf4;
+	cursor: pointer;
+}
+
+.red {
+	background-color: #facabe;
+	cursor: pointer;
+}
+
+.container {
+	margin: auto;
+	padding: auto;
+	max-width: 60%;
+	display: flex;
+	border-radius: 0.5em;
+	flex-direction: row;
+}
+
+.subcontainer {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.holecontainer {
+	display: flex;
+	flex-direction: row;
+}
+
+#blueholes {
+	flex-direction: row-reverse;
+	display: flex;
+
+}
+
+.messages {
+	margin-top: 5vw;
+	text-align: center;
+	font-family: 'Nova Mono';
+	font-size: 3vw;
+}
+
+h4 {
+	font-family: 'Russo One', sans-serif;
+	font-size: 4vw;
+}
+
+h5 {
+	font-family: 'Nova Mono';
+	font-size: 4vw;
+}
+
+.info {
+	display: none;
+	position: absolute;
+	border: 10px solid black;
+	text-align: center;
+	padding-top: 15vw;
+	padding-bottom: 15vw;
+	padding-left: 30vw;
+	padding-right: 30vw;
+	margin-left: 11%;
+	background-color: white;
+	z-index: 1000;
+}
+
+.newgame {
+	cursor: pointer;
+	font-family: 'Nova Mono';
+	font-size: 3vw;
+}
+
+.playingfield {
+	margin-top: 3em; 
+}
+
+@media screen and (max-width: 890px) {
+    body {
+        background-color: lightgreen;
+    }
+}

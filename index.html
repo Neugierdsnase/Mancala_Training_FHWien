@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mancala</title>
+	<link href='https://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="mancala.css">
+
+</head>
+<body>
+	<div id="infoboxes">
+		<div class="info" id="bluewins">
+			<h5>blue wins</h5>
+			<p class="newgame">play again</p>
+		</div>
+		<div class="info" id="redwins">
+			<h5>red wins</h5>
+			<p class="newgame">play again</p>
+		</div>
+		<div class="info" id="draw">
+			<h5>it's a draw</h5>
+			<p class="newgame">play again</p>
+		</div>
+		<div class="info" id="welcome">
+			<h4>mancala</h4>
+			<p class="newgame">play</p>
+		</div>
+	</div>
+
+	<div class="playingfield">
+		<div class="container">
+			<div class="subcontainer" id="firstsub">
+
+			</div>
+			<div class="subcontainer" id="secondsub">
+				<div class="holecontainer" id="blueholes">
+					
+				</div>
+				<div class="holecontainer" id="redholes">	
+			</div>
+			</div>	
+			<div class="subcontainer" id="thirdsub">
+				
+			</div>			
+		</div>
+	
+
+		<div class="messages">
+			<div id="turn">
+				 
+			</div>
+			<div id="errors">
+
+			</div>
+		</div>
+	</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="js/model.js"></script>
+<script src="js/control.js"></script>
+</body>
+</html>
