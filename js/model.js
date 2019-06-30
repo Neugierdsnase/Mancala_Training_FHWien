@@ -18,39 +18,39 @@ function Hole(stones, row, team) {
 }
 
 Array.prototype.move = function (from, to) {
-  this.splice(to, 0, this.splice(from, 1)[0]);
+	this.splice(to, 0, this.splice(from, 1)[0]);
 };
 
 function createBlueHoles() {
 	var r = 1;
 	var i = 0;
-	while(i<5) {
+	while (i < 5) {
 		blueHoles[i] = new Hole(5, r, "blue");
-		$( "<div class='hole blue' id='bh" + i + "'></div>" ).appendTo( "#blueholes" );
+		$("<div class='hole blue' id='bh" + i + "'></div>").appendTo("#blueholes");
 		var current = '#bh' + i;
 		$(current).html(blueHoles[i].stones);
 		r++;
 		i++;
 	}
 	bigHole = new Hole(0, 'none', "blue");
-	$( "<div class='hole blue' id='bhn'></div>" ).appendTo( "#firstsub" );
+	$("<div class='hole blue' id='bhn'></div>").appendTo("#firstsub");
 	blueHoles.push(bigHole);
 }
 
 function createRedHoles() {
 	var r = 5;
 	var i = 0;
-	while(i<5) {
+	while (i < 5) {
 		redHoles[i] = new Hole(5, r, "red");
-		$( "<div class='hole red' id='rh" + i + "'></div>" ).appendTo( "#redholes" );
+		$("<div class='hole red' id='rh" + i + "'></div>").appendTo("#redholes");
 		var current = '#rh' + i;
 		$(current).html(redHoles[i].stones);
 		r--;
 		i++;
 	}
 	bigHole = new Hole(0, 'none', "red");
-	$( "<div class='hole red' id='rhn'></div>" ).appendTo( "#thirdsub" );
-	redHoles.push(bigHole);	
+	$("<div class='hole red' id='rhn'></div>").appendTo("#thirdsub");
+	redHoles.push(bigHole);
 }
 
 function setUpGame() {
@@ -61,10 +61,10 @@ function setUpGame() {
 	allHoles = allHoles.concat(blueHoles, redHoles);
 
 	//set up the array of DOM elements the same way
-	blueDOMHoles = $( ".hole.blue" ).toArray()
+	blueDOMHoles = $(".hole.blue").toArray()
 	blueDOMHoles.move(0, 5);
 
-	redDOMHoles = $( ".hole.red" ).toArray()
+	redDOMHoles = $(".hole.red").toArray()
 	allDOMHoles = allDOMHoles.concat(blueDOMHoles, redDOMHoles);
 	$('#turn').html("blue starts");
 	console.log(allDOMHoles);
@@ -132,15 +132,15 @@ function changeTurn() {
 }
 
 //update all the holes to display the right value
-function updateAllHoles() {	
+function updateAllHoles() {
 	for (k = 0; k < allHoles.length; k++) {
 		$(allDOMHoles[k]).html(allHoles[k].stones);
 	}
 }
 
 //player clicks a hole
-function playerChoice(clicked) { 				
-//clickedHole here is the index in the allHoles array of the hole that has been clicked
+function playerChoice(clicked) {
+	//clickedHole here is the index in the allHoles array of the hole that has been clicked
 
 	$('#errors').html(" ").fadeIn(0);
 	//cache clicked hole object once to always know where we started counting
@@ -150,7 +150,7 @@ function playerChoice(clicked) {
 	//check if clicked hole is playable by player
 	if (clickedHole.team === playerTurn && clickedHole.stones !== 0 && clickedHole.row !== 'none') {
 		//redistribute stones by iterating through array
-		while (clickedHole.stones>0) {
+		while (clickedHole.stones > 0) {
 			clicked++;
 
 			//start array from beginning when at last object
@@ -159,7 +159,7 @@ function playerChoice(clicked) {
 			}
 
 			//leave out hole with opposite team && row:'none'
-			if (clickedHole.team === allHoles[clicked].team || allHoles[clicked].row !== 'none') { 
+			if (clickedHole.team === allHoles[clicked].team || allHoles[clicked].row !== 'none') {
 				allHoles[clicked].stones++;
 				clickedHole.stones--;
 				$clickedDOMHole.val(clickedHole.stones);
@@ -169,7 +169,7 @@ function playerChoice(clicked) {
 			//prepare hook for actions on last stone		
 			if (clickedHole.stones === 0) {
 				//cache hole with same row value but different team value as last stone (opposite hole)
-				var oppositeHole = allHoles.filter(function(hole) {
+				var oppositeHole = allHoles.filter(function (hole) {
 					if (allHoles[clicked].row === hole.row && allHoles[clicked].team !== hole.team && hole.row !== 'none') {
 						return true;
 					}
@@ -177,18 +177,18 @@ function playerChoice(clicked) {
 				oppositeHole = oppositeHole[0];
 
 				//cache "score hole" with same team value as clicked hole and row value 'none'
-				var scoreHole = allHoles.filter(function(hole) {
+				var scoreHole = allHoles.filter(function (hole) {
 					if (clickedHole.team === hole.team && hole.row === 'none') {
 						return true;
 					}
 				});
 				scoreHole = scoreHole[0];
-				
+
 				//if last stone falls into "row:'none'", go again (no ternary here)
 				if (allHoles[clicked].row === 'none') {
 					$('#errors').html(playerTurn + " goes again").fadeOut(1700);
-				//if alone on own side and opposite whole has at least one stone, add both those stones to active teams "row:'none'" hole
-				} else if(allHoles[clicked].stones === 1 && oppositeHole.stones > 0 && allHoles[clicked].team === clickedHole.team) {
+					//if alone on own side and opposite whole has at least one stone, add both those stones to active teams "row:'none'" hole
+				} else if (allHoles[clicked].stones === 1 && oppositeHole.stones > 0 && allHoles[clicked].team === clickedHole.team) {
 					scoreHole.stones += oppositeHole.stones;
 					scoreHole.stones += allHoles[clicked].stones;
 					oppositeHole.stones = 0;
@@ -202,9 +202,9 @@ function playerChoice(clicked) {
 
 			}
 
-			}
-	checkEnd();
-	updateAllHoles();
+		}
+		checkEnd();
+		updateAllHoles();
 	} else {
 		//put some kind of friendly error message here
 		$('#errors').html("you can't play this hole").fadeOut(1700);
